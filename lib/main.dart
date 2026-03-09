@@ -46,33 +46,47 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         children: <Widget>[
           Expanded(
-            child: Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Container(
-                    padding: EdgeInsets.all(20),
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      userInput,
-                      style: TextStyle(fontSize: 18, color: Colors.black87),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.all(20),
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    userInput,
+                    style: TextStyle(fontSize: 18, color: Colors.black87),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(15),
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    answer,
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Container(
-                    padding: EdgeInsets.all(15),
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      answer,
-                      style: TextStyle(
-                        fontSize: 30,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
+            Expanded(flex: 3,
+            child: GridView.builder(itemCount: buttons.length,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),itemBuilder: (BuildContext context, int index){
+              if (index == 0) {
+                return _MyButton(buttontapped: () {
+                  setState((){
+                    userInput = '';
+                    answer = '0';
+                  });
+                },
+                buttonText: buttons[index],
+                color: Colors.blueGrey[600],
+                textColor: Colors.white70,
+                );
+              }
+            }),)
           ),
         ],
       ),
