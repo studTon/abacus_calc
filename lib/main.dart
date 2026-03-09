@@ -71,25 +71,37 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ),
-            Expanded(flex: 3,
-            child: GridView.builder(itemCount: buttons.length,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),itemBuilder: (BuildContext context, int index){
-              if (index == 0) {
-                return _MyButton(buttontapped: () {
-                  setState((){
-                    userInput = '';
-                    answer = '0';
-                  });
-                },
-                buttonText: buttons[index],
-                color: Colors.blueGrey[600],
-                textColor: Colors.white70,
-                );
-              }
-            }),)
+          ),
+          Expanded(
+            flex: 3,
+            child: GridView.builder(
+              itemCount: buttons.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+              itemBuilder: (BuildContext context, int index) {
+                if (index == 0) {
+                  return _MyButton(
+                    buttontapped: () {
+                      setState(() {
+                        userInput = '';
+                        answer = '0';
+                      });
+                    },
+                    buttonText: buttons[index],
+                    color: Colors.blueGrey[600],
+                    textColor: Colors.white70,
+                  );
+                }
+                return Container();
+              },
+            ),
           ),
         ],
       ),
     );
+  }
+  
+  // ignore: non_constant_identifier_names
+  Widget _MyButton({required Function() buttontapped, required String buttonText, Color? color, required Color textColor}) {
+    return Container();
   }
 }
