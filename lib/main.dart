@@ -57,58 +57,88 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Abacus Calculator"),
-        backgroundColor: Colors.blueAccent,
-        foregroundColor: Colors.white,
-      ),
       backgroundColor: Colors.blue[100],
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      body: SafeArea(
+        child: OrientationBuilder(
+          builder: (context, orientation) {
+            if (orientation == Orientation.portrait) {
+              return Column(
                 children: <Widget>[
-                  Container(
-                    padding: const EdgeInsets.all(20),
-                    alignment: Alignment.centerRight,
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Text(
-                        userInput,
-                        style: const TextStyle(fontSize: 40, color: Color.fromARGB(255, 14, 62, 86)),
-                      ),
-                    ),
+                  Expanded(
+                    child: _buildOutputDisplay(),
                   ),
-                  Container(
-                    padding: const EdgeInsets.all(15),
-                    alignment: Alignment.centerRight,
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Text(
-                        answer,
-                        style: const TextStyle(
-                            fontSize: 30,
-                            color: Color.fromARGB(255, 14, 62, 86),
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  )
-                ]),
-          ),
-          Expanded(
-            flex: 3,
-            child: GridView.builder(
-                itemCount: buttons.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4),
-                itemBuilder: (BuildContext context, int index) {
-                  return _buildButton(buttons[index]);
-                }),
-          ),
-        ],
+                  Expanded(
+                    flex: 4,
+                    child: _buildButtonGrid(),
+                  ),
+                ],
+              );
+            } else {
+              return Row(
+                children: <Widget>[
+                  Expanded(
+                    child: _buildOutputDisplay(),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: _buildButtonGrid(),
+                  ),
+                ],
+              );
+            }
+          },
+        ),
       ),
     );
+  }
+
+  Widget _buildOutputDisplay() {
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Container(
+            padding: const EdgeInsets.all(20),
+            alignment: Alignment.centerRight,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Text(
+                userInput,
+                style: const TextStyle(
+                    fontSize: 20, color: Color.fromARGB(255, 14, 62, 86)),
+              ),
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(15),
+            alignment: Alignment.centerRight,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Text(
+                answer,
+                style: const TextStyle(
+                    fontSize: 20,
+                    color: Color.fromARGB(255, 14, 62, 86),
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+          )
+        ]);
+  }
+
+  Widget _buildButtonGrid() {
+    return LayoutBuilder(builder: (context, constraints) {
+      return GridView.builder(
+          itemCount: buttons.length,
+          physics: const NeverScrollableScrollPhysics(),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 4,
+            childAspectRatio:
+                (constraints.maxWidth / 4) / (constraints.maxHeight / 5),
+          ),
+          itemBuilder: (BuildContext context, int index) {
+            return _buildButton(buttons[index]);
+          });
+    });
   }
 
   Widget _buildButton(String buttonText) {
