@@ -1,6 +1,6 @@
 # abacus_calc
 
-A new Flutter project.
+Simple flutter calculator application.
 
 ## Getting Started
 
