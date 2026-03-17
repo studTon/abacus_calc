@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
 class MyButton extends StatelessWidget {
-  // declaring variables
   final Color? color;
   final Color? textColor;
   final String buttonText;
   final VoidCallback? buttontapped;
 
-  // constructor
   const MyButton(
       {Key? key,
       this.color,
@@ -20,9 +18,9 @@ class MyButton extends StatelessWidget {
     return GestureDetector(
       onTap: buttontapped,
       child: Padding(
-        padding: const EdgeInsets.all(0.2),
+        padding: const EdgeInsets.all(8.0),
         child: ClipRRect(
-          //borderRadius: BorderRadius.circular(25),
+          borderRadius: BorderRadius.circular(20),
           child: Container(
             color: color,
             child: Center(
