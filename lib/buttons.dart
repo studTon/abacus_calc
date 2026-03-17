@@ -7,11 +7,11 @@ class MyButton extends StatelessWidget {
   final VoidCallback? buttontapped;
 
   const MyButton(
-      {Key? key,
+      {super.key,
       this.color,
       this.textColor,
       required this.buttonText,
-      this.buttontapped}) : super(key: key);
+      this.buttontapped});
   
   @override
   Widget build(BuildContext context) {
