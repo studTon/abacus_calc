@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Abacus Calculator',
       debugShowCheckedModeBanner: false,
       home: const HomePage(),
     ); // MaterialApp
@@ -57,7 +58,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Calculator"),
+        title: const Text("Abacus Calculator"),
         backgroundColor: Colors.blueAccent,
         foregroundColor: Colors.white,
       ),
@@ -175,7 +176,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   bool isOperator(String x) {
-    if (x == '/' || x == 'x' || x == '-' || x == '+' || x == '=') {
+    if (x == '/' || x == 'X' || x == '-' || x == '+' || x == '=') {
       return true;
     }
     return false;
