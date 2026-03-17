@@ -18,9 +18,9 @@ class MyButton extends StatelessWidget {
     return GestureDetector(
       onTap: buttontapped,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(12.0),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(8),
           child: Container(
             color: color,
             child: Center(
@@ -28,7 +28,7 @@ class MyButton extends StatelessWidget {
                 buttonText,
                 style: TextStyle(
                   color: textColor,
-                  fontSize: 25,
+                  fontSize: 28,
                   fontWeight: FontWeight.bold,
                 ),
               ),

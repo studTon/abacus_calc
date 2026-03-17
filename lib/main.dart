@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.blueAccent,
         foregroundColor: Colors.white,
       ),
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.blue[100],
       body: Column(
         children: <Widget>[
           Expanded(
@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                       scrollDirection: Axis.horizontal,
                       child: Text(
                         userInput,
-                        style: const TextStyle(fontSize: 18, color: Colors.black),
+                        style: const TextStyle(fontSize: 40, color: Color.fromARGB(255, 14, 62, 86)),
                       ),
                     ),
                   ),
@@ -89,7 +89,7 @@ class _HomePageState extends State<HomePage> {
                         answer,
                         style: const TextStyle(
                             fontSize: 30,
-                            color: Colors.black,
+                            color: Color.fromARGB(255, 14, 62, 86),
                             fontWeight: FontWeight.bold),
                       ),
                     ),
