@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="abacus_calc"
+        android:label="Abacus Calculator"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
